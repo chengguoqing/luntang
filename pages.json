@@ -11,6 +11,33 @@
 					"titleNView": false
 				}
 			}
+		},
+		{
+			"path": "pages/details/index",
+			"bz": "详情",
+			"style": {
+				"navigationBarTitleText": "详情",
+				"backgroundColor": "#6CAF00",
+				"enablePullDownRefresh": true //开启下拉刷新
+			}
+		},
+		{
+			"path": "pages/details/yuyue",
+			"bz": "预约",
+			"style": {
+				"navigationBarTitleText": "预约",
+				"backgroundColor": "#6CAF00",
+				"enablePullDownRefresh": true //开启下拉刷新
+			}
+		},
+		{
+			"path": "pages/details/message",
+			"bz": "留言",
+			"style": {
+				"navigationBarTitleText": "留言",
+				"backgroundColor": "#6CAF00",
+				"enablePullDownRefresh": true //开启下拉刷新
+			}
 		}
 	],
 

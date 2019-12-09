@@ -14,7 +14,10 @@
             "autoclose" : true,
             "delay" : 0
         },
-        "modules" : {},
+        "modules" : {
+            "OAuth" : {},
+            "Share" : {}
+        },
         /* 模块配置 */
         "distribute" : {
             /* 应用发布信息 */
@@ -47,7 +50,21 @@
             },
             "ios" : {},
             /* ios打包配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wxd30e3955b1735b8e",
+                        "appsecret" : "364f14629ee2511ee5c301cd04d7f83e",
+                        "UniversalLinks" : ""
+                    }
+                },
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wxd30e3955b1735b8e",
+                        "UniversalLinks" : ""
+                    }
+                }
+            }
         }
     },
     /* SDK配置 */

@@ -1198,7 +1198,7 @@ a:hover {
 	right: 0;
 	left: 0;
 }
-
+/* 禁止换行 */
 .dx_jz {
 	white-space: nowrap;
 }

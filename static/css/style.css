@@ -1,23 +1,41 @@
-.shhsddrfr{
+.shhsddrfr {
 	position: fixed;
 	z-index: 100;
 	right: 20upx;
 	bottom: 40upx;
 }
-.dsfdsf_xeert{
+
+.dsfdsf_xeert {
 	border: 1px solid #E0E0E0;
 	width: 90upx;
 	height: 90upx;
 	border-radius: 50%;
 	text-align: center;
 	line-height: 90upx;
-	background: rgba(255,255,255,0.5);
+	background: rgba(255, 255, 255, 0.5);
 }
-.dsfdsf_xeert image{
+
+.dsfdsf_xeert image {
 	width: 90upx;
 }
-.dsfdsf_xeert.ab{
+
+.dsfdsf_xeert.ab {
 	border: 0;
-	background:transparent;
+	background: transparent;
 	margin-top: 40upx;
 }
+
+.rightxeert {
+	position: absolute;
+	right: 20upx;
+	top: 24upx;
+	width: 34upx;
+}
+
+.lanhgsdert {
+	width: 180upx;
+}
+	.sdfdfsderr{
+		width: 50%;
+		float: left;
+	}

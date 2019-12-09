@@ -2,7 +2,7 @@
 	<view>
 		<!-- #ifdef APP-PLUS -->
 		<view class="bgls dsfsdf_dre">
-			
+
 		</view>
 		<!-- #endif -->
 		<view class="bgls   pm20 sjhhsderty">
@@ -12,9 +12,9 @@
 					<view class="col">
 						<image src="../../static/img/logo.png" class="logoxerertx cz" mode="widthFix"></image>
 						<view class="pr f_b">
-								<picker mode="selector" :range="array" >
-										<image src="../../static/img/baise.png" mode="widthFix" class="xialderert cz"></image>
-								</picker>
+							<picker mode="selector" :range="array">
+								<image src="../../static/img/baise.png" mode="widthFix" class="xialderert cz"></image>
+							</picker>
 						</view>
 					</view>
 					<view class="col tr pt10">
@@ -45,7 +45,7 @@
 				</swiper-item>
 			</swiper>
 
-			<view class="btm pt20 pm 20 mt20">
+			<view class="btm pt20 pm 20 mt20" @tap="hf('/pages/details/index')">
 				<view class="fz30 z3 dianer dsfdxeer ba">
 					注意了！百色这几家超市批发店被检查
 				</view>
@@ -56,7 +56,7 @@
 					<text class="ml10">查看1</text>
 				</view>
 			</view>
-			<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5">
+			<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5" @tap="hf('/pages/details/index')">
 				<view class="col">
 					<view class="fz30 z3 diansan dsfdxeer">
 						注意了！百色这几家超市批发店被检查出问题百
@@ -68,12 +68,12 @@
 						<text class="ml10">查看1</text>
 					</view>
 				</view>
-				<image src="../../static/img/20191206094913.png" class="jhjxhxeert"></image>
+				<image src="../../static/img/20191206094913.png" class="jhjxhxeert ml10"></image>
 			</view>
-			<view class="btm pt20 pm 20 mt20 row">
-				<image src="../../static/img/20191116214332.jpg" class="w100" mode="widthFix"></image>
+			<view class="btm pt20 pm 20 mt20 row" @tap="hf('/pages/details/index')">
+				<image src="../../static/img/20191116214332.jpg" class="w100 fgrtxeet"></image>
 			</view>
-			<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5">
+			<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5" @tap="hf('/pages/details/index')">
 				<view class="col">
 					<view class="fz30 z3 diansan dsfdxeer">
 						注意了！百色这几家超市批发店被检查出问题百
@@ -85,7 +85,7 @@
 						<text class="ml10">查看1</text>
 					</view>
 				</view>
-				<image src="../../static/img/20191206094913.png" class="jhjxhxeert"></image>
+				<image src="../../static/img/20191206094913.png" class="jhjxhxeert ml10"></image>
 			</view>
 		</view>
 		<view class="pd bgls pt20 pm20 mt20">
@@ -155,12 +155,11 @@
 			}, 1000);
 		},
 		onShareAppMessage: function(res) {
-					// 来自页面内分享按钮
-					return {
-						title: "獨行工匠",
-						path: "/pages/index/index"
-					}
-				},
+			return {
+				title: "獨行工匠",
+				path: "/pages/index/index"
+			}
+		},
 		mounted() {
 
 		},
@@ -239,15 +238,21 @@
 		left: 20upx;
 		top: 20upx;
 	}
-	.dsfsdf_dre{
+
+	.dsfsdf_dre {
 		height: 40upx;
 	}
+
 	/* #ifdef MP-WEIXIN */
-	.sjhhsderty{
+	.sjhhsderty {
 		position: sticky;
 		left: 0;
 		top: 0;
 		z-index: 1000;
 	}
+
 	/* #endif */
+	.fgrtxeet {
+		height: 170upx;
+	}
 </style>
