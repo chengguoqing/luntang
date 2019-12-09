@@ -24,20 +24,22 @@
 			</view>
 			<!-- #endif -->
 			<view class="ssdrt ">
-				<view class="fz32 cf dfdsf_drtx" v-for="sd in fenlei">
-					{{sd}}
+				<view class="fz32 cf dfdsf_drtx" v-for="sd in topxee">
+					{{sd.name}}
 				</view>
 				<view class="qc"></view>
 			</view>
 		</view>
 		<view class="pd pt20 pm20">
 			<swiper class="jhhxddrrtt" :autoplay="true" :interval="3000" :duration="1000">
-				<swiper-item v-for="(sd,idx) in 5" :key="idx">
+				<swiper-item v-for="(sd,idx) in bannere" :key="idx">
 					<view class="swiper-item pr">
-						<image src="../../static/img/20191207190352.png"></image>
+						<image :src="sd.banner"></image>
 						<view class="z3 fz26 jjhxddrt pd ">
 							<view class="dian">
-								<text class="cz">百色建新片区棚改一期设计方案出炉！地址原来在这里，毗邻百色建新片区棚改一期设计方案出炉百色建新片区棚改一期设计方案出炉</text>
+								<text class="cz">
+									{{sd.text}}
+								</text>
 							</view>
 							</text>
 						</view>
@@ -45,7 +47,7 @@
 				</swiper-item>
 			</swiper>
 
-			<view class="btm pt20 pm 20 mt20" @tap="hf('/pages/details/index')">
+			<!-- 	<view class="btm pt20 pm 20 mt20" @tap="hf('/pages/details/index')">
 				<view class="fz30 z3 dianer dsfdxeer ba">
 					注意了！百色这几家超市批发店被检查
 				</view>
@@ -55,25 +57,25 @@
 					<text class="ml10">回复0</text>
 					<text class="ml10">查看1</text>
 				</view>
-			</view>
-			<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5" @tap="hf('/pages/details/index')">
+			</view> -->
+			<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index')">
 				<view class="col">
 					<view class="fz30 z3 diansan dsfdxeer">
-						注意了！百色这几家超市批发店被检查出问题百
+						{{sd.title}}
 					</view>
 					<view class=" z9 fz24">
-						剑指苍穹
-						<text class="ml10">12-07</text>
-						<text class="ml10">回复0</text>
-						<text class="ml10">查看1</text>
+						{{sd.author}}
+						<text class="ml5">{{sd.postdate}}</text>
+						<text class="ml5">回复{{sd.replies}}</text>
+						<text class="ml5">查看{{sd.hits}}</text>
 					</view>
 				</view>
 				<image src="../../static/img/20191206094913.png" class="jhjxhxeert ml10"></image>
 			</view>
-			<view class="btm pt20 pm 20 mt20 row" @tap="hf('/pages/details/index')">
+			<!-- 	<view class="btm pt20 pm 20 mt20 row" @tap="hf('/pages/details/index')">
 				<image src="../../static/img/20191116214332.jpg" class="w100 fgrtxeet"></image>
-			</view>
-			<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5" @tap="hf('/pages/details/index')">
+			</view> -->
+			<!-- 	<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5" @tap="hf('/pages/details/index')">
 				<view class="col">
 					<view class="fz30 z3 diansan dsfdxeer">
 						注意了！百色这几家超市批发店被检查出问题百
@@ -86,42 +88,49 @@
 					</view>
 				</view>
 				<image src="../../static/img/20191206094913.png" class="jhjxhxeert ml10"></image>
+			</view> -->
+		</view>
+		<view class="cen fz26 z9 btm pt20 pm20 cen" v-if="isload">
+			<image src="../../static/img/loading.gif" mode="widthFix" class="cz loaddertxe"></image>
+			<text class="cz">加载中...</text>
+		</view>
+		<view class="" v-if="false">
+			<view class="pd bgls pt20 pm20 mt20">
+				<view class="pr">
+					<icon type="search" size="16" class="fasseeet" />
+					<input class="xdferttxe" v-model="ssserrt" confirm-type="search" />
+				</view>
 			</view>
-		</view>
-		<view class="pd bgls pt20 pm20 mt20">
-			<view class="pr">
-				<icon type="search" size="16" class="fasseeet" />
-				<input class="xdferttxe" v-model="ssserrt" confirm-type="search" />
+			<view class="mt20 cen fz24 z3">
+				1995-2014@百色视窗广告传媒有限公司
 			</view>
-		</view>
-		<view class="mt20 cen fz24 z3">
-			1995-2014@百色视窗广告传媒有限公司
-		</view>
-		<view class="mt20 cen fz24 z3">
-			广告合作：18007768899
-		</view>
-		<view class="mt20 cen fz24 z3">
-			招聘发布：18007768882、18007768883
-		</view>
-		<view class="mt20 cen fz24 z3">
-			业务总机：0776-2222228
-		</view>
-		<view class="mt20 cen fz24 z3">
-			爆料及论坛管理：18007768880
-		</view>
-		<view class="mt20 cen fz24 z3">
-			[退出] <text class="ml10">意见反馈</text>
-			<text class="ml10">无图版</text>
-			<text class="ml10">联系我们</text>
-		</view>
-		<view class="shhsddrfr">
-			<view class="dsfdsf_xeert">
-				<image class="cz" src="../../static/img/8016_517015730076384e13a476b1bcc11.png" mode="widthFix"></image>
+			<view class="mt20 cen fz24 z3">
+				广告合作：18007768899
 			</view>
-			<view class="dsfdsf_xeert ab" v-if="scrollTop>200" @tap="goTop">
-				<image class="cz" src="../../static/img/top_01.png" mode="widthFix"></image>
+			<view class="mt20 cen fz24 z3">
+				招聘发布：18007768882、18007768883
 			</view>
-		</view>
+			<view class="mt20 cen fz24 z3">
+				业务总机：0776-2222228
+			</view>
+			<view class="mt20 cen fz24 z3">
+				爆料及论坛管理：18007768880
+			</view>
+			<view class="mt20 cen fz24 z3">
+				[退出] <text class="ml10">意见反馈</text>
+				<text class="ml10">无图版</text>
+				<text class="ml10">联系我们</text>
+			</view>
+			</view>
+			<view class="shhsddrfr">
+				<view class="dsfdsf_xeert">
+					<image class="cz" src="../../static/img/8016_517015730076384e13a476b1bcc11.png" mode="widthFix"></image>
+				</view>
+				<view class="dsfdsf_xeert ab" v-if="scrollTop>200" @tap="goTop">
+					<image class="cz" src="../../static/img/top_01.png" mode="widthFix"></image>
+				</view>
+			</view>
+		
 	</view>
 </template>
 <script>
@@ -133,7 +142,11 @@
 					'法律', '宝妈', '宠物', '摄影'
 				],
 				ssserrt: '',
-				scrollTop: ''
+				scrollTop: '',
+				topxee: [],
+				bannere: '',
+				lidata: [],
+				isload: false
 			}
 		},
 		components: {
@@ -144,6 +157,35 @@
 				uni.pageScrollTo({
 					scrollTop: 0
 				})
+			},
+			async getttop() {
+				const cahse = {}
+				cahse.a = 'wxModular'
+				cahse.modname = 'wxnavw'
+				cahse.version = 'a32'
+				const xerrt = await this.get(cahse)
+				this.topxee = xerrt.data
+			},
+			async getlist(ty) {
+				let ssdr = {}
+				const kjhxee = await this.geter('getindex', ssdr)
+				if (!this.bannere) {
+					this.bannere = kjhxee.banner
+				}
+				if (!ty) {
+					kjhxee.data.map(a => {
+						this.lidata.push(a)
+					})
+				} else {
+					setTimeout(a => {
+						this.isload = false
+						kjhxee.data.map(a => {
+							this.lidata.push(a)
+						})
+					}, 3000)
+				}
+
+
 			}
 		},
 		onPageScroll(e) {
@@ -154,11 +196,20 @@
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
+		onReachBottom(e) {
+			this.isload = true
+			this.getlist(true)
+			console.log(e)
+		},
 		onShareAppMessage: function(res) {
 			return {
 				title: "獨行工匠",
 				path: "/pages/index/index"
 			}
+		},
+		onLoad() {
+			this.getttop()
+			this.getlist()
 		},
 		mounted() {
 
@@ -179,7 +230,7 @@
 	}
 
 	.dfdsf_drtx {
-		width: 16.66%;
+		width: 20%;
 		float: left;
 		margin-top: 8upx;
 		margin-bottom: 8upx;
@@ -187,7 +238,7 @@
 		text-align: center;
 	}
 
-	.dfdsf_drtx:nth-child(6N) {
+	.dfdsf_drtx:nth-child(5N) {
 		border: 0;
 	}
 
@@ -254,5 +305,9 @@
 	/* #endif */
 	.fgrtxeet {
 		height: 170upx;
+	}
+
+	.loaddertxe {
+		width: 70upx;
 	}
 </style>

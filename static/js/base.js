@@ -1,4 +1,5 @@
-var url_d = "https://duxinggj.com/"
+var url_d = "https://www.gxbs.net/mm/index.php",
+urlse='http://yapi.demo.qunar.com/mock/53256/'
 exports.base = {
 	install: function(Vue, options) {
 		Vue.prototype.version = "9.2.1"
@@ -17,7 +18,7 @@ exports.base = {
 			return _result.join('&');
 		};
 
-		Vue.prototype.post = function(url, canshu, call, ty) {
+		Vue.prototype.post = function(url, canshu, ty) {
 			return new Promise((resolve, reject) => {
 				uni.request({
 					url: url_d + url,
@@ -32,10 +33,22 @@ exports.base = {
 				});
 			})
 		}
-		Vue.prototype.get = function(url, canshu, call, ty) {
+		Vue.prototype.get = function( canshu, ty) {
 			return new Promise((resolve, reject) => {
 				uni.request({
-					url: url_d + url,
+					url: url_d,
+					method: "get",
+					data: canshu,
+					success: (res) => {
+						resolve(res.data)
+					}
+				});
+			})
+		}
+		Vue.prototype.geter = function(urle,canshu, ty) {
+			return new Promise((resolve, reject) => {
+				uni.request({
+					url: urlse+urle,
 					method: "get",
 					data: canshu,
 					success: (res) => {
