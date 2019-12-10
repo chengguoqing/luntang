@@ -1,10 +1,5 @@
 <template>
-	<view>
-		<!-- #ifdef APP-PLUS -->
-		<view class="bgls dsfsdf_dre">
-
-		</view>
-		<!-- #endif -->
+	<view class="">
 		<view class="bgls   pm20 sjhhsderty">
 			<!-- #ifdef H5 || APP-PLUS -->
 			<view class="pd mb20">
@@ -30,6 +25,7 @@
 				<view class="qc"></view>
 			</view>
 		</view>
+		<view class="ov w100">
 		<view class="pd pt20 pm20">
 			<swiper class="jhhxddrrtt" :autoplay="true" :interval="3000" :duration="1000">
 				<swiper-item v-for="(sd,idx) in bannere" :key="idx">
@@ -47,18 +43,6 @@
 				</swiper-item>
 			</swiper>
 
-			<!-- 	<view class="btm pt20 pm 20 mt20" @tap="hf('/pages/details/index')">
-				<view class="fz30 z3 dianer dsfdxeer ba">
-					注意了！百色这几家超市批发店被检查
-				</view>
-				<view class=" z9 fz24">
-					剑指苍穹
-					<text class="ml10">12-07</text>
-					<text class="ml10">回复0</text>
-					<text class="ml10">查看1</text>
-				</view>
-			</view> -->
-			
 
 			<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index')">
 				<view class="col">
@@ -74,23 +58,6 @@
 				</view>
 				<image :src="sd.image" class="jhjxhxeert ml10" v-if="sd.image"></image>
 			</view>
-			<!-- 	<view class="btm pt20 pm 20 mt20 row" @tap="hf('/pages/details/index')">
-				<image src="../../static/img/20191116214332.jpg" class="w100 fgrtxeet"></image>
-			</view> -->
-			<!-- 	<view class="btm pt20 pm 20 mt20 row" v-for="sd in 5" @tap="hf('/pages/details/index')">
-				<view class="col">
-					<view class="fz30 z3 diansan dsfdxeer">
-						注意了！百色这几家超市批发店被检查出问题百
-					</view>
-					<view class=" z9 fz24">
-						剑指苍穹
-						<text class="ml10">12-07</text>
-						<text class="ml10">回复0</text>
-						<text class="ml10">查看1</text>
-					</view>
-				</view>
-				<image src="../../static/img/20191206094913.png" class="jhjxhxeert ml10"></image>
-			</view> -->
 		</view>
 		<view class="cen fz26 z9 btm pt20 pm20 cen" v-if="isload">
 			<image src="../../static/img/loading.gif" mode="widthFix" class="cz loaddertxe"></image>
@@ -123,16 +90,18 @@
 				<text class="ml10">无图版</text>
 				<text class="ml10">联系我们</text>
 			</view>
+		</view>
+		<view class="shhsddrfr">
+			<view class="dsfdsf_xeert">
+				<image class="cz" src="../../static/img/8016_517015730076384e13a476b1bcc11.png" mode="widthFix"></image>
 			</view>
-			<view class="shhsddrfr">
-				<view class="dsfdsf_xeert">
-					<image class="cz" src="../../static/img/8016_517015730076384e13a476b1bcc11.png" mode="widthFix"></image>
-				</view>
-				<view class="dsfdsf_xeert ab" v-if="scrollTop>200" @tap="goTop">
-					<image class="cz" src="../../static/img/top_01.png" mode="widthFix"></image>
-				</view>
+			<view class="dsfdsf_xeert ab" v-if="scrollTop>200" @tap="goTop">
+				<image class="cz" src="../../static/img/top_01.png" mode="widthFix"></image>
 			</view>
-		
+		</view>
+
+			
+		</view>
 	</view>
 </template>
 <script>
@@ -149,7 +118,7 @@
 				bannere: '',
 				lidata: [],
 				isload: false,
-				page:0
+				page: 0
 			}
 		},
 		components: {
@@ -171,11 +140,11 @@
 			},
 			async getlist(ty) {
 				let ssdr = {}
-				ssdr.a='wxModular'
-				ssdr.modname='xcxindex'
-				ssdr.page=this.page
-				ssdr.version='a32'
-				ssdr.external='uni'
+				ssdr.a = 'wxModular'
+				ssdr.modname = 'xcxindex'
+				ssdr.page = this.page
+				ssdr.version = 'a32'
+				ssdr.external = 'uni'
 				const kjhxee = await this.get(ssdr)
 				if (!this.bannere) {
 					this.bannere = kjhxee.banner
@@ -206,8 +175,8 @@
 		},
 		onReachBottom(e) {
 			this.isload = true
-			
-			this.page ++
+
+			this.page++
 			this.getlist(true)
 		},
 		onShareAppMessage: function(res) {
@@ -308,7 +277,11 @@
 		left: 0;
 		top: 0;
 		z-index: 1000;
+		/* #ifdef APP-PLUS */
+		padding-top: 90upx;
+		/* #endif */
 	}
+
 	.fgrtxeet {
 		height: 170upx;
 	}
