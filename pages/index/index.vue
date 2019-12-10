@@ -34,11 +34,11 @@
 			<swiper class="jhhxddrrtt" :autoplay="true" :interval="3000" :duration="1000">
 				<swiper-item v-for="(sd,idx) in bannere" :key="idx">
 					<view class="swiper-item pr">
-						<image :src="sd.banner"></image>
+						<image :src="sd.image"></image>
 						<view class="z3 fz26 jjhxddrt pd ">
 							<view class="dian">
 								<text class="cz">
-									{{sd.text}}
+									{{sd.title}}
 								</text>
 							</view>
 							</text>
@@ -58,6 +58,8 @@
 					<text class="ml10">查看1</text>
 				</view>
 			</view> -->
+			
+
 			<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index')">
 				<view class="col">
 					<view class="fz30 z3 diansan dsfdxeer">
@@ -70,7 +72,7 @@
 						<text class="ml5">查看{{sd.hits}}</text>
 					</view>
 				</view>
-				<image src="../../static/img/20191206094913.png" class="jhjxhxeert ml10"></image>
+				<image :src="sd.image" class="jhjxhxeert ml10" v-if="sd.image"></image>
 			</view>
 			<!-- 	<view class="btm pt20 pm 20 mt20 row" @tap="hf('/pages/details/index')">
 				<image src="../../static/img/20191116214332.jpg" class="w100 fgrtxeet"></image>
@@ -146,7 +148,8 @@
 				topxee: [],
 				bannere: '',
 				lidata: [],
-				isload: false
+				isload: false,
+				page:0
 			}
 		},
 		components: {
@@ -168,7 +171,12 @@
 			},
 			async getlist(ty) {
 				let ssdr = {}
-				const kjhxee = await this.geter('getindex', ssdr)
+				ssdr.a='wxModular'
+				ssdr.modname='xcxindex'
+				ssdr.page=this.page
+				ssdr.version='a32'
+				ssdr.external='uni'
+				const kjhxee = await this.get(ssdr)
 				if (!this.bannere) {
 					this.bannere = kjhxee.banner
 				}
@@ -182,7 +190,7 @@
 						kjhxee.data.map(a => {
 							this.lidata.push(a)
 						})
-					}, 3000)
+					}, 1000)
 				}
 
 
@@ -198,8 +206,9 @@
 		},
 		onReachBottom(e) {
 			this.isload = true
+			
+			this.page ++
 			this.getlist(true)
-			console.log(e)
 		},
 		onShareAppMessage: function(res) {
 			return {
@@ -291,18 +300,15 @@
 	}
 
 	.dsfsdf_dre {
-		height: 40upx;
+		height: 90upx;
 	}
 
-	/* #ifdef MP-WEIXIN */
 	.sjhhsderty {
 		position: sticky;
 		left: 0;
 		top: 0;
 		z-index: 1000;
 	}
-
-	/* #endif */
 	.fgrtxeet {
 		height: 170upx;
 	}
