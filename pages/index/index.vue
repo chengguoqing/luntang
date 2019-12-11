@@ -26,81 +26,100 @@
 			</view>
 		</view>
 		<view class="ov w100">
-		<view class="pd pt20 pm20">
-			<swiper class="jhhxddrrtt" :autoplay="true" :interval="3000" :duration="1000">
-				<swiper-item v-for="(sd,idx) in bannere" :key="idx">
-					<view class="swiper-item pr">
-						<image :src="sd.image"></image>
-						<view class="z3 fz26 jjhxddrt pd ">
-							<view class="dian">
-								<text class="cz">
-									{{sd.title}}
+			<view class="pd pt20 pm20">
+				<swiper class="jhhxddrrtt" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
+					<swiper-item v-for="(sd,idx) in bannere" :key="idx">
+						<view class="swiper-item pr">
+							<image :src="sd.image"></image>
+							<view class="z3 fz26 jjhxddrt pd ">
+								<view class="dian">
+									<text class="cz">
+										{{sd.title}}
+									</text>
+								</view>
 								</text>
 							</view>
-							</text>
+						</view>
+					</swiper-item>
+				</swiper>
+
+
+				<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index')">
+					<view class="col">
+						<view class="fz30 z3 diansan dsfdxeer">
+							{{sd.title}}
+						</view>
+						<view class=" z9 fz24">
+							{{sd.author}}
+							<text class="ml5">{{sd.postdate}}</text>
+							<text class="ml5">回复{{sd.replies}}</text>
+							<text class="ml5">查看{{sd.hits}}</text>
 						</view>
 					</view>
-				</swiper-item>
-			</swiper>
-
-
-			<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index')">
-				<view class="col">
-					<view class="fz30 z3 diansan dsfdxeer">
-						{{sd.title}}
-					</view>
-					<view class=" z9 fz24">
-						{{sd.author}}
-						<text class="ml5">{{sd.postdate}}</text>
-						<text class="ml5">回复{{sd.replies}}</text>
-						<text class="ml5">查看{{sd.hits}}</text>
-					</view>
-				</view>
-				<image :src="sd.image" class="jhjxhxeert ml10" v-if="sd.image"></image>
-			</view>
-		</view>
-		<view class="cen fz26 z9 btm pt20 pm20 cen" v-if="isload">
-			<image src="../../static/img/loading.gif" mode="widthFix" class="cz loaddertxe"></image>
-			<text class="cz">加载中...</text>
-		</view>
-		<view class="" v-if="false">
-			<view class="pd bgls pt20 pm20 mt20">
-				<view class="pr">
-					<icon type="search" size="16" class="fasseeet" />
-					<input class="xdferttxe" v-model="ssserrt" confirm-type="search" />
+					<image :src="sd.image" class="jhjxhxeert ml10" v-if="sd.image"></image>
 				</view>
 			</view>
-			<view class="mt20 cen fz24 z3">
-				1995-2014@百色视窗广告传媒有限公司
+			<view class="cen fz26 z9 btm pt20 pm20 cen" v-if="isload">
+				<image src="../../static/img/loading.gif" mode="widthFix" class="cz loaddertxe"></image>
+				<text class="cz">加载中...</text>
 			</view>
-			<view class="mt20 cen fz24 z3">
-				广告合作：18007768899
+			<view class="" v-if="false">
+				<view class="pd bgls pt20 pm20 mt20">
+					<view class="pr">
+						<icon type="search" size="16" class="fasseeet" />
+						<input class="xdferttxe" v-model="ssserrt" confirm-type="search" />
+					</view>
+				</view>
+				<view class="mt20 cen fz24 z3">
+					1995-2014@百色视窗广告传媒有限公司
+				</view>
+				<view class="mt20 cen fz24 z3">
+					广告合作：18007768899
+				</view>
+				<view class="mt20 cen fz24 z3">
+					招聘发布：18007768882、18007768883
+				</view>
+				<view class="mt20 cen fz24 z3">
+					业务总机：0776-2222228
+				</view>
+				<view class="mt20 cen fz24 z3">
+					爆料及论坛管理：18007768880
+				</view>
+				<view class="mt20 cen fz24 z3">
+					[退出] <text class="ml10">意见反馈</text>
+					<text class="ml10">无图版</text>
+					<text class="ml10">联系我们</text>
+				</view>
 			</view>
-			<view class="mt20 cen fz24 z3">
-				招聘发布：18007768882、18007768883
-			</view>
-			<view class="mt20 cen fz24 z3">
-				业务总机：0776-2222228
-			</view>
-			<view class="mt20 cen fz24 z3">
-				爆料及论坛管理：18007768880
-			</view>
-			<view class="mt20 cen fz24 z3">
-				[退出] <text class="ml10">意见反馈</text>
-				<text class="ml10">无图版</text>
-				<text class="ml10">联系我们</text>
+			<view class="shhsddrfr" v-if="false">
+				<view class="dsfdsf_xeert">
+					<image class="cz" src="../../static/img/8016_517015730076384e13a476b1bcc11.png" mode="widthFix"></image>
+				</view>
+				<view class="dsfdsf_xeert ab" v-if="scrollTop>200" @tap="goTop">
+					<image class="cz" src="../../static/img/top_01.png" mode="widthFix"></image>
+				</view>
 			</view>
 		</view>
-		<view class="shhsddrfr">
-			<view class="dsfdsf_xeert">
-				<image class="cz" src="../../static/img/8016_517015730076384e13a476b1bcc11.png" mode="widthFix"></image>
+		<!-- 底部菜单 -->
+		<view class="jjhkhksder pd row">
+			<view class="col">
+				<image src="../../static/img/20191206094913.png" class="tanghanbxe yj cz"></image>
+				<view class="tanghanbxe yj cz">
+					<image src="../../static/img/bianji.png" class="bianjixer" mode="widthFix"></image>
+				</view>
+				<view class="tanghanbxe yj cz">
+					<icon type="search" class="z9 cz" size="18"></icon>
+				</view>
+				<view class="tanghanbxe yj cz fz28 z9">
+					消息
+				</view>
+				<view class="tanghanbxe yj cz fz28 z9">
+					客服
+				</view>
 			</view>
-			<view class="dsfdsf_xeert ab" v-if="scrollTop>200" @tap="goTop">
-				<image class="cz" src="../../static/img/top_01.png" mode="widthFix"></image>
+			<view class="jghgxeertx yj">
+				返回首页
 			</view>
-		</view>
-
-			
 		</view>
 	</view>
 </template>
@@ -288,5 +307,37 @@
 
 	.loaddertxe {
 		width: 70upx;
+	}
+	.jjhkhksder{
+		position: fixed;
+		left: 0;
+		width: 100%;
+		bottom: 20upx;
+	}
+	.jghgxeertx{
+		width: 80upx;
+		height: 80upx;
+		background: #6EAE06;
+		color: #fff;
+		font-size: 26upx;
+		padding-left: 4upx;
+		padding-right: 4upx;
+		text-align: center;
+		line-height: 1.2;
+		padding-top: 6upx;
+		
+	}
+	.tanghanbxe{
+		width: 76upx;
+		height: 76upx;
+		background: #fff;
+		display: inline-block;
+		border: 1px solid #E0E0E0;
+		text-align: center;
+		line-height: 76upx;
+		margin-right: 26upx;
+	}
+	.bianjixer{
+		width: 40upx;
 	}
 </style>

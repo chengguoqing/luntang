@@ -11,17 +11,24 @@
 				<icon type="search" size="20" class="cz"></icon>
 			</view>
 		</view>
-		<view class="pd bgff">
+		<view class="pd bgff ">
 			<view class="fz34 b z3 mt10 titleser">
 				bi碧桂园4房2厅2卫2阳台，147平，150万，10240元/平，精装修
 			</view>
-			<view class="z9 fz28 mt20 row">
-				<view class="col dx_jz">
-					右论房产中心
-					<text class="ml10">2019-12-04 17:24</text>
-				</view>
-				<view class="col tr">
-					阅读8864 回复0
+			<view class="row mt20">
+				<image src="../../static/img/20191206094913.png" class="yj useertxeet cz"></image>
+				<view class="col pl20">
+					<view class="fz30 z9 mt5">
+						田东周围大小事
+					</view>
+					<view class="fz24 z9 mt10">
+						2019-12-10 09:02
+						<image src="../../static/img/chakan.png" mode="widthFix" class="kjhxeeert cz ml10"></image>
+						<text>2130</text>
+						<image src="../../static/img/xly.png" mode="widthFix" class="kjhxeeert cz ml10 ab"></image>
+						<text>2130</text>
+						<text class="red ml10">[举报]</text>
+					</view>
 				</view>
 			</view>
 			<view class="biagexe mt20">
@@ -336,5 +343,23 @@
 	.dertrtxer {
 		width: 70upx;
 		height: 70upx;
+	}
+	.useertxeet{
+		width: 90upx;
+		height: 90upx;
+	}
+	.kjhxeeert{
+		width: 40upx;
+		position: relative;
+		bottom: 4upx;
+		margin-right: 4upx;
+	}
+	.kjhxeeert.ab{
+		width: 34upx;
+		bottom: 2upx;
+	}
+	.pd{
+		padding-left: 40upx;
+		padding-right: 40upx;
 	}
 </style>
