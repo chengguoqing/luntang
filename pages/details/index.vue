@@ -8,30 +8,31 @@
 				</view>
 			</scroll-view>
 			<view class="gjhgheert" @tap="onlsdd">
-				<icon type="search" size="20" class="cz"></icon>
+				<image src="../../static/img/fadajing.png" class="cz fdxjihnxert" mode="widthFix"></image>
+				<!-- <icon type="search" size="20" class="cz"></icon> -->
 			</view>
 		</view>
 		<view class="pd bgff ">
 			<view class="fz34 b z3 mt10 titleser">
-				bi碧桂园4房2厅2卫2阳台，147平，150万，10240元/平，精装修
+				{{sd.subject}}
 			</view>
 			<view class="row mt20">
-				<image src="../../static/img/20191206094913.png" class="yj useertxeet cz"></image>
+				<image :src="user.icon" class="yj useertxeet cz"></image>
 				<view class="col pl20">
 					<view class="fz30 z9 mt5">
-						田东周围大小事
+						{{user.username}}
 					</view>
 					<view class="fz24 z9 mt10">
-						2019-12-10 09:02
+						{{sd.postdate}}
 						<image src="../../static/img/chakan.png" mode="widthFix" class="kjhxeeert cz ml10"></image>
-						<text>2130</text>
+						<text>{{sd.hits}}</text>
 						<image src="../../static/img/xly.png" mode="widthFix" class="kjhxeeert cz ml10 ab"></image>
-						<text>2130</text>
+						<text>{{sd.replies}}</text>
 						<text class="red ml10">[举报]</text>
 					</view>
 				</view>
 			</view>
-			<view class="biagexe mt20">
+			<!-- <view class="biagexe mt20">
 				<view class="duywerow row" v-for="(sd,idx) in biaoge" :key="idx">
 					<view class="lablexxe fz32 b">
 						{{sd.name}}
@@ -40,9 +41,9 @@
 						{{sd.value}}
 					</view>
 				</view>
-			</view>
-			<view class="fz30 sdf_deert">
-				<view class="mt20  z3">
+			</view> -->
+			<view class="fz30 sdf_deert" v-html="sd.content">
+			<!-- 	<view class="mt20  z3">
 					房源编号：005561
 				</view>
 				<view class="z3">
@@ -51,7 +52,7 @@
 				<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/6ac6aed6-4da2-406b-920f-10518b8d0ba5.jpg"
 				 class="w100 cz" mode="widthFix"></image>
 				<image src="https://duxinggj-2018-1251133427.cos.ap-guangzhou.myqcloud.com/66e1c28e-d4aa-4763-b408-5f82023565b4.jpg"
-				 class="w100 cz" mode="widthFix"></image>
+				 class="w100 cz" mode="widthFix"></image> -->
 
 			</view>
 		</view>
@@ -59,22 +60,21 @@
 			<view class="red fz34 cen  pt20">
 				[预约看房]
 			</view>
-			<yuyue></yuyue>
+			<yuyue :tid="tid"></yuyue>
 		</view>
 		<view class="mt20 bgff pd">
-			<view class="pt20 pm20 row" v-for="sd in 2">
-				<image src="../../static/img/20191206094913.png" class="yj dertrtxer"></image>
+			<view class="pt20 pm20 row" v-for="(sd,idx) in liuyan">
+				<image :src="sd.icon" class="yj dertrtxer"></image>
 				<view class="col pl20">
 					<view class="z9 fz26">
 						<view class="">
-							才有ng[江边小灰层]
+							{{sd.username}}
 						</view>
 						<view class="fz24">
-							1楼 2019-07-30 08:54:27
+							{{idx+1}}楼 {{sd.postdate}}
 						</view>
 					</view>
-					<view class="fz30 z3 mt20">
-						胜多负少的鼎折覆餗胜多负少的鼎折覆餗胜多负少的鼎折覆餗胜多负少的鼎折覆餗
+					<view class="fz30 z3 mt20" v-html="sd.content">
 					</view>
 				</view>
 			</view>
@@ -131,6 +131,10 @@
 	export default {
 		data() {
 			return {
+				sd:'',
+				user:'',
+				liuyan:'',
+				tid:'',
 				fenlei: ['首页', '八卦', '招聘', '房产', '二手房', '租房', '交易', '交友', '美食', '二手车', '农业', '装修', '风水', '服务', '教育', '信息', '老赖',
 					'贷款',
 					'法律', '宝妈', '宠物', '摄影'
@@ -227,10 +231,44 @@
 				uni.makePhoneCall({
 					phoneNumber: '13538190372' //仅为示例
 				});
+			},
+			async getdad(tid){ //获取详情
+				const cahse = {}
+				cahse.a = 'wxModular'
+				cahse.modname = 'wxreaddata'
+				cahse.tid = tid
+				cahse.external = 'uni'
+				this.sd = await this.get(cahse)
+				this.sd = this.sd.data
+				this.sd.postdate = this.time_d(this.sd.postdate)
+				this.user = this.sd.user
+			},
+			async getliuyan(tid ) {
+				const cahse = {}
+				cahse.a = 'wxModular'
+				cahse.modname = 'wxreaddata'
+				cahse.tid = tid
+				cahse.ac= 'ajax'
+				cahse.page =1
+				cahse.ptable = 23
+				cahse.external = 'uni'
+				this.liuyan = await this.get(cahse)
+				this.liuyan = this.liuyan.data
+				this.liuyan.map(a=>{
+					a.postdate = this.time_d(a.postdate)
+					a.icon = a.user.icon
+					a.username = a.username
+				})
+				console.log()
 			}
 		},
 		mounted() {
 
+		},
+		onLoad(e) {
+			this.tid = e.tid
+			this.getdad(e.tid)
+			this.getliuyan(e.tid)
 		}
 	}
 </script>
@@ -262,12 +300,14 @@
 		width: 100upx;
 		text-align: center;
 		line-height: 1;
-		height: 68upx;
+		height: 66upx;
 		position: absolute;
 		right: 0;
-		line-height: 68upx;
 		top: 15upx;
 		z-index: 100;
+		line-height: 66upx;
+		-webkit-box-sizing: border-box;
+		            box-sizing: border-box;
 	}
 
 	.titleser {
@@ -361,5 +401,8 @@
 	.pd{
 		padding-left: 40upx;
 		padding-right: 40upx;
+	}
+	.fdxjihnxert{
+		width: 50upx;
 	}
 </style>

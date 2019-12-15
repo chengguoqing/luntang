@@ -44,7 +44,7 @@
 				</swiper>
 
 
-				<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index')">
+				<view class="btm pt20 pm 20 mt20 row" v-for="sd in lidata" @tap="hf('/pages/details/index?tid='+sd.tid)">
 					<view class="col">
 						<view class="fz30 z3 diansan dsfdxeer">
 							{{sd.title}}
@@ -107,8 +107,9 @@
 				<view class="tanghanbxe yj cz">
 					<image src="../../static/img/bianji.png" class="bianjixer" mode="widthFix"></image>
 				</view>
-				<view class="tanghanbxe yj cz">
-					<icon type="search" class="z9 cz" size="18"></icon>
+				<view class="tanghanbxe yj cz ">
+					<image src="../../static/img/fadajing.png" class="bianjixer" mode="widthFix"></image>
+					
 				</view>
 				<view class="tanghanbxe yj cz fz28 z9">
 					消息
@@ -118,7 +119,10 @@
 				</view>
 			</view>
 			<view class="jghgxeertx yj">
-				返回首页
+				返回
+				<view class="">
+					首页
+				</view>
 			</view>
 		</view>
 	</view>
@@ -325,6 +329,9 @@
 		text-align: center;
 		line-height: 1.2;
 		padding-top: 6upx;
+		/* #ifdef APP-PLUS */
+			padding-top: 10upx;
+		/* #endif */
 		
 	}
 	.tanghanbxe{
@@ -339,5 +346,11 @@
 	}
 	.bianjixer{
 		width: 40upx;
+	}
+	.tanghanbxe.ab{
+		/* #ifdef APP-PLUS */
+			padding-top: 16upx;
+		/* #endif */
+		
 	}
 </style>

@@ -33,9 +33,16 @@
 }
 
 .lanhgsdert {
-	width: 180upx;
+	width: 200upx;
 }
-	.sdfdfsderr{
-		width: 50%;
-		float: left;
-	}
+
+.sdfdfsderr {
+	width: 50%;
+	float: left;
+}
+
+.dcz {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

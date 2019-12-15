@@ -1,4 +1,4 @@
-var url_d = "https://www.gxbs.net/mm/index.php",
+var url_d = "https://www.gxbs.net/mm/",
 urlse='http://yapi.demo.qunar.com/mock/53256/'
 exports.base = {
 	install: function(Vue, options) {
@@ -33,10 +33,11 @@ exports.base = {
 				});
 			})
 		}
-		Vue.prototype.get = function( canshu, ty) {
+		Vue.prototype.get = function( canshu,urls) {
+			urls = urls || 'index.php'
 			return new Promise((resolve, reject) => {
 				uni.request({
-					url: url_d,
+					url: url_d +urls,
 					method: "get",
 					data: canshu,
 					success: (res) => {
@@ -72,7 +73,7 @@ exports.base = {
 
 		Vue.prototype.time_d = function(t) {
 			let time = new Date()
-			time.setTime(t)
+			time.setTime(t*1000)
 			let Year = time.getFullYear(),
 				Month = time.getMonth() + 1,
 				Data = time.getDate() < 10 ? 0 + '' + time.getDate() : time.getDate(),
