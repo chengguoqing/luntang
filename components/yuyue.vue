@@ -1,42 +1,9 @@
 <template>
 	<view>
-		<view class="fz32 z3">
-			<text class="red">*</text>
-			预约时间
-		</view>
-		<view class="sdfdfsderr mt20" v-for="sd in foersd">
-			<label>
-				<checkbox /><text class="fz28">{{sd.name}}</text>
-			</label>
-		</view>
-		<view class="qc">
-
+		<view class="red fz34 cen  pt20">
+			[{{subject}}]
 		</view>
 		<view class="mt20 pt20">
-			<view class="pt20 pm20 btm pr row">
-				<label class="fz30 z3 lanhgsdert">
-					<text class="red fz28">*</text>
-					首付能力：
-				</label>
-				<view class="col">
-					<picker mode="selector" :range="rangeseer" @change="ssdfdrtt">
-						<view class="fz30 z3">{{rangeseer[ixer]}}</view>
-					</picker>
-				</view>
-				<image src="../../static/img/right.png" class="rightxeert" mode="widthFix"></image>
-			</view>
-			<view class="pt20 pm20 btm pr row">
-				<label class="fz30 z3 lanhgsdert">
-					<text class="red fz28">*</text>
-					月供能力：
-				</label>
-				<view class="col">
-					<picker mode="selector" :range="rangesesan" @change="ssdfdrttsan">
-						<view class="fz30 z3">{{rangesesan[ixsan]}}</view>
-					</picker>
-				</view>
-				<image src="../../static/img/right.png" class="rightxeert" mode="widthFix"></image>
-			</view>
 			<view class="" v-for="sd in useer">
 				<view class="pt20 pm20 btm pr row" v-if="sd.type == 'textarea'">
 					<label class="fz30 z3 lanhgsdert">
@@ -56,8 +23,31 @@
 						<input type="text" value="" :placeholder="sd.placeholder" class="fz30" />
 					</view>
 				</view>
+				<view class="btm pm20" v-if="sd.type == 'checkbox-pay'">
+					<view class="sdfdfsderr mt20 ab" v-for="sf in sd.xzssd" >
+						<label>
+							<checkbox /><text class="fz28">{{sf.name}}</text>
+						</label>
+					
+					</view>
+					
+					<view class="qc">
+						
+					</view>
+				</view>
+				<view class="pt20 pm20 btm pr row" v-if="sd.type == 'select-pay-num'||sd.type == 'select'">
+					<label class="fz30 z3 lanhgsdert">
+						<text class="red fz28">*</text>
+						{{sd.label}}：
+					</label>
+					<view class="col">
+						<picker mode="selector" :range="sd.xzssd" >
+							<view class="fz30 z3">{{sd.xzssd[sd.xiabia]}}</view>
+						</picker>
+					</view>
+					<image src="../../static/img/right.png" class="rightxeert" mode="widthFix"></image>
+				</view>
 			</view>
-			
 		</view>
 		<view class="btm pt40">
 			<view class="sdfdfsderr pr10">
@@ -76,28 +66,7 @@
 		data() {
 			return {
 				useer:[],
-				foersd: [{
-					name: '今天看房',
-					value: ""
-				}, {
-					name: '明天看房',
-					value: ""
-				}, {
-					name: '后天看房',
-					value: ""
-				}, {
-					name: '大后天看房',
-					value: ""
-				}, {
-					name: '周末有时间看房',
-					value: ""
-				}, {
-					name: '工作日有时间看房',
-					value: ""
-				}, {
-					name: '请联系我约时间看房',
-					value: ""
-				}],
+				subject:'',
 				ixer: 0,
 				ixsan: 0,
 				rangeseer: [
@@ -119,9 +88,31 @@
 			async getformsd (){
 				const cahse = {}
 				cahse.a = 'readput'
-				cahse.tid = '2903753'
+				cahse.tid = this.tid
 				let sderrt = await this.get(cahse,'comaction.php')
+				this.subject = sderrt.subject
+				sderrt.inputa.map(a=>{
+					if(a.value){
+						a.xzssd = []
+						let sdeer = a.value.split(",")
+						sdeer.map(b=>{
+							if(a.type =="checkbox-pay"){
+								let xddrt = {}
+								xddrt.name = b
+								xddrt.value = ''
+								a.xzssd.push(xddrt)
+							}
+							if(a.type =="select-pay-num" || a.type =="select"){
+								a.xzssd.push(b)
+							}
+						})
+						if(a.type =="select-pay-num" || a.type =="select"){
+							a.xiabia = 0
+						}
+					}
+				})
 				this.useer= sderrt.inputa
+				this.$emit('gettitle',this.subject)
 			}
 		},
 		mounted() {
@@ -130,5 +121,7 @@
 	}
 </script>
 <style scoped>
-
+	.sdfdfsderr.ab{
+		width: 100% !important;
+	}
 </style>

@@ -56,11 +56,9 @@
 
 			</view>
 		</view>
-		<view class="mt20 pd bgff pm20">
-			<view class="red fz34 cen  pt20">
-				[预约看房]
-			</view>
-			<yuyue :tid="tid"></yuyue>
+		<view class="mt20 pd bgff pm20" v-if="subject">
+			
+			<yuyue :tid="tid" @gettitle='gettitle'></yuyue>
 		</view>
 		<view class="mt20 bgff pd">
 			<view class="pt20 pm20 row" v-for="(sd,idx) in liuyan">
@@ -119,8 +117,8 @@
 					</view>
 				</view>
 			</view>
-			<view class="yuyeertt" @tap="hf('/pages/details/yuyue')">
-				预约看房
+			<view class="yuyeertt" @tap="hf('/pages/details/yuyue')" v-if="subject">
+				{{subject}}
 			</view>
 		</view>
 
@@ -175,7 +173,8 @@
 				}, {
 					name: '单价',
 					value: '10204元/m2'
-				}]
+				}],
+				subject:''
 			}
 		},
 		components: {
@@ -254,12 +253,19 @@
 				cahse.external = 'uni'
 				this.liuyan = await this.get(cahse)
 				this.liuyan = this.liuyan.data
-				this.liuyan.map(a=>{
-					a.postdate = this.time_d(a.postdate)
-					a.icon = a.user.icon
-					a.username = a.username
-				})
-				console.log()
+				try{
+					this.liuyan.map(a=>{
+						a.postdate = this.time_d(a.postdate)
+						a.icon = a.user.icon
+						a.username = a.username
+					})
+				}catch(e){
+					
+				}
+				
+			},
+			gettitle (e){
+				this.subject = e
 			}
 		},
 		mounted() {
